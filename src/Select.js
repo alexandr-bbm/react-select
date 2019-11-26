@@ -756,6 +756,12 @@ export default class Select extends Component<Props, State> {
 
   getNextFocusedOption(options: OptionsType) {
     const { focusedOption: lastFocusedOption } = this.state;
+    const { disableAutoFocus } = this.props;
+
+    if (disableAutoFocus) {
+      return null;
+    }
+
     return lastFocusedOption && options.indexOf(lastFocusedOption) > -1
       ? lastFocusedOption
       : options[0];
